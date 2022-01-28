@@ -3,23 +3,21 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-//document.body.innerHTML = error.message
-
 const hearts = document.querySelectorAll("span.like-glyph")
-//console.log(hearts)
+console.log(hearts)
 hearts.forEach(hearts => hearts.addEventListener('click', heartCallback))
 
-debugger
-function heartCallback(hearts) {
-  //console.log(hearts.target)
+//debugger
+function heartCallback(heart) {
+  console.log(heart)
   debugger
   mimicServerCall()
   .then(() => {
-    if (hearts.target.innerText === EMPTY_HEART) {
-      return hearts.target.innerText === FULL_HEART
+    if (heart.target.innerText === EMPTY_HEART) {
+      return heart.target.innerText = FULL_HEART
     }
-    else if(hearts.target.innerText === FULL_HEART) {
-      return hearts.target.innerText === EMPTY_HEART
+    else if(heart.target.innerText === FULL_HEART) {
+      return heart.target.innerText = EMPTY_HEART
     }
   })
   .catch(() => {
@@ -27,18 +25,12 @@ function heartCallback(hearts) {
     console.log(errorMessage);
     errorMessage.className = 'show'
     debugger
-
-    setTimeout(() => {
-      const errorMessage = document.getElementById('modal')
-      errorMessage.className = ('hidden', 3000)
-    })
-  })
+  
+    setTimeout(()=> {
+      const errorMessage = docuent.getElementById('modal')
+      errorMessage.className = 'hidden'}, 300);
+  });
 }
-
-//heartCallback();
-
-
-
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
