@@ -4,10 +4,11 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 const hearts = document.querySelectorAll("span.like-glyph")
-console.log(hearts)
+//console.log(hearts)
 hearts.forEach(hearts = hearts.addEventListener('click', heartCallback))
 
 function heartCallback(hearts) {
+  //console.log(hearts.target)
   mimicServerCall()
   .then(() => {
     if (hearts.target.innerText === EMPTY_HEART) {
