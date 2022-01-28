@@ -3,12 +3,16 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+//document.body.innerHTML = error.message
+
 const hearts = document.querySelectorAll("span.like-glyph")
 //console.log(hearts)
-hearts.forEach(hearts = hearts.addEventListener('click', heartCallback))
+hearts.forEach(hearts => hearts.addEventListener('click', heartCallback))
 
+debugger
 function heartCallback(hearts) {
   //console.log(hearts.target)
+  debugger
   mimicServerCall()
   .then(() => {
     if (hearts.target.innerText === EMPTY_HEART) {
@@ -18,7 +22,20 @@ function heartCallback(hearts) {
       return hearts.target.innerText === EMPTY_HEART
     }
   })
+  .catch(() => {
+    const errorMessage = document.getElementById('modal')
+    console.log(errorMessage);
+    errorMessage.className = 'show'
+    debugger
+
+    setTimeout(() => {
+      const errorMessage = document.getElementById('modal')
+      errorMessage.className = ('hidden', 3000)
+    })
+  })
 }
+
+//heartCallback();
 
 
 
