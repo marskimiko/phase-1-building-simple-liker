@@ -3,6 +3,21 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+const hearts = document.querySelectorAll("span.like-glyph")
+console.log(hearts)
+hearts.forEach(hearts = hearts.addEventListener('click', heartCallback))
+
+function heartCallback(hearts) {
+  mimicServerCall()
+  .then(() => {
+    if (hearts.target.innerText === EMPTY_HEART) {
+      return hearts.target.innerText === FULL_HEART
+    }
+    else if(hearts.target.innerText === FULL_HEART) {
+      return hearts.target.innerText === EMPTY_HEART
+    }
+  })
+}
 
 
 
@@ -23,3 +38,12 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
     }, 300);
   });
 }
+
+
+// Heart Button Click
+// 1. Get all like buttons on the page and store them as a variable to reference
+// 2. Create callback function that has if statement for what should happen if its a full heart vs an empty heart
+// 2a. If it's a full heart -- make server request. If response successful then make heart empty
+// 2b. If it's an emtpy heart -- make server request. If response successful then make heart full
+// 2c. If we get back an error from the server, catch and display the error modal
+// 3. Go through all of them and add  an onClick event listener that will use that function
